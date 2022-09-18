@@ -187,7 +187,7 @@ if (isset($_SESSION["user-username"]) || isset($_SESSION["employee-username"])) 
           </div>
           <div class="row">
             <div class="col-md-4">
-              <img class="img-fluid" src="./Images/<?php echo $image_link ?>"></img>
+              <img class="img-fluid" src="./uploads/Images/<?php echo $image_link ?>" style="width: 100%;"/>
             </div>
 
             <div class="col-md-6">
@@ -202,7 +202,7 @@ if (isset($_SESSION["user-username"]) || isset($_SESSION["employee-username"])) 
               </p>
               <p><b>ISBN:</b> <?php echo $isbn ?></p>
               <?php if ($currentuser == $is_employee) { ?>
-                <a class="btn btn-warning btn-md mr-lg-2" href="./Item_documents/<?php echo $item_link ?>">View Item</a>
+                <a class="btn btn-warning btn-md mr-lg-2" href="./uploads/Documents/<?php echo $item_link ?>">View Item</a>
 
                 <?php
               } else {
@@ -217,7 +217,7 @@ if (isset($_SESSION["user-username"]) || isset($_SESSION["employee-username"])) 
                     } else {
                     ?>
                       <p>
-                        Please click <a class="btn btn-warning btn-md mr-lg-2" href="./Item_documents/<?php echo $item_link ?>">here</a> to view your item
+                        Please click <a class="btn btn-warning btn-md mr-lg-2" href="./uploads/Documents/<?php echo $item_link ?>">here</a> to view your item
                       </p>
               <?php
                     }
