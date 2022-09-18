@@ -2,6 +2,18 @@
 
 session_start();
 
+function uploadFiles($target_dir, $file_name){    
+
+    $target_file = $target_dir . basename($_FILES[$file_name]["name"]);             
+    if (move_uploaded_file($_FILES[$file_name]["tmp_name"], $target_file)) {        
+    } 
+
+}
+
+function echoMsg($msg){
+    echo "<script> alert( '{$msg}' )</script>";            
+}
+
 if (isset($_SESSION["employee-username"])) {
 
 // needs to connect to database
@@ -9,9 +21,9 @@ require_once "Include/db.php" ;
 $currentuser = $_SESSION["employee-username"];
 
 
-if (isset($_POST["Submit"])) {
+if (isset($_POST["Submit"])) {    
     if (!empty($_POST["name"]) && !empty($_POST["author-dev-artist"]) && !empty($_POST["type"]) && !empty($_POST["isbn"]) &&
-    !empty($_POST["available"]) && !empty(strval($_POST["imageLink"])) && !empty(strval($_POST["itemLink"]))) {
+    !empty($_POST["available"]) && !empty($_FILES["imageLink"]) && !empty($_FILES["itemLink"])) {       
         $Name = $_POST["name"];
         $author_dev_artist = $_POST["author-dev-artist"];
         $type = strtolower($_POST["type"]);
@@ -22,8 +34,8 @@ if (isset($_POST["Submit"])) {
         }else {
             $available = 0;
         }
-        $imageLink = strval($_POST["imageLink"]);
-        $itemLink = strval($_POST["itemLink"]);
+        $imageLink = strval($_FILES["imageLink"]["name"]);
+        $itemLink = strval($_FILES["itemLink"]["name"]);
 
         global $ConnectingDB;
         if(strlen($isbn) == 13){
@@ -38,15 +50,18 @@ if (isset($_POST["Submit"])) {
                     $stmt->bindValue(':typE', $type);
 
             $Execute = $stmt->execute();
-            if ($Execute) {
-                echo '<script> alert("Record Has Added Successfully")</script>';
+            if ($Execute) {                
+                uploadFiles("./uploads/Images/", "imageLink");
+                uploadFiles("./uploads/Documents/", "itemLink");
+                
+                echoMsg("Record Has Added Successfully");
             }
-        }else {
-            echo '<script>alert("ISBN has to be 13 digits")</script>';
+        }else {            
+            echoMsg("ISBN has to be 13 digits");
         }
         
-    } else {
-        echo '<script> alert("Please add Name and And other fields")</script>';
+    } else {        
+        echoMsg("Please add Name and And other fields");        
     }
 }
 ?>
@@ -94,7 +109,7 @@ if (isset($_POST["Submit"])) {
         <div class="intro-content text-white">
             <div class="container">
                 <div class="box">
-                    <form class="" action="insert-into-database.php" method="POST">
+                    <form class="" action="insert-into-database.php" method="POST" enctype="multipart/form-data">
                         <div class="input-group">
                             <span class="FieldInfo">Name:</span>                        
                             <input class="inp" type="text" name="name" value="">
@@ -108,8 +123,7 @@ if (isset($_POST["Submit"])) {
                         
                         
                         <div class="input-group">
-                            <span class="FieldInfo">Type:</span>                        
-                            <!-- <input class="inp" type="text" name="type" value=""> -->
+                            <span class="FieldInfo">Type:</span>
                             <select class="inp" name="type">
                                 <option value = "book">Book</option>
                                 <option value = "games">Games</option>
