@@ -108,7 +108,7 @@ if (isset($_POST["Submit"])) {
       
         <div class="intro-content text-white">
             <div class="container">
-                <div class="box">
+                <div class="box col-lg-4">
                     <form class="" action="insert-into-database.php" method="POST" enctype="multipart/form-data">
                         <div class="input-group">
                             <span class="FieldInfo">Name:</span>                        

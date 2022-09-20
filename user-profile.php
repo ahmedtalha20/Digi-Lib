@@ -107,41 +107,41 @@ if (isset($_SESSION["user-username"])) {
           ?>
 
           <div class="user-profile row">
-            <div class="col-md-6">
+            <div class="col-lg-6">
               <label for="Name" class="form-label">Name</label>
               <input type="text" class="form-control" id="Name" name="Name placeholder=" John" value="<?php echo $Name; ?>" disabled />
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
               <label for="Address" class="form-label">Billing Address</label>
               <input type="text" class="form-control" id="Address" name="Address" placeholder="1234 Main st" value="<?php echo $billing_Address; ?>" disabled />
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" id="email" placeholder="john.smith@gmail.com" name="email" value="<?php echo $email; ?>" disabled />
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3">
               <label for="credit-card" class="form-label">Credit Card Number</label>
               <input type="text" class="form-control" id="credit-card" name="credit-card" value="<?php echo $credit_Card; ?>" disabled />
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3">
               <label for="cvv" class="form-label">CVV</label>
               <input type="password" class="form-control" id="cvv" name="cvv" value="<?php echo $cvv; ?>" disabled />
             </div>
 
-            <div class="col-md-3">
+            <div class="col-lg-3">
               <label for="username" class="form-label">Username</label>
               <input type="text" class="form-control" id="username" name="username" placeholder="jsmith" value="<?php echo $username; ?>" disabled />
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3">
               <label for="password" class="form-label">Password</label>
               <input type="password" class="form-control" id="password" name="password" value="<?php echo $password; ?>" disabled />
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3">
               <label for="number" class="form-label">Items Rented: </label>
               <p><?php echo $total;
                   ?></p>
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3">
               <label for="subscription" class="form-label">Subscription: </label>
               <p><?php if ($subcription == 0) {
                     echo "No subscription on file";

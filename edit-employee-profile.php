@@ -108,16 +108,16 @@ if (isset($_SESSION["employee-username"])) {
                 <div>
                   <form class="" action="edit-employee-profile.php?id=<?php echo $currentUser; ?>"  method="POST">
                     <div class="employee-profile row">
-                      <div class="col-md-6">
+                      <div class="col-lg-6">
                         <label for="Name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="Name" name="Name" placeholder=" John" value="<?php echo $Name; ?>" required />
                       </div>
                       
-                      <div class="col-md-3">
+                      <div class="col-lg-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" class="form-control" id="username" name="username" placeholder="jsmith" value="<?php echo $username; ?>" disabled />
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-lg-3">
                       <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password" />
                       </div>
