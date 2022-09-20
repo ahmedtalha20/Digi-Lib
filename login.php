@@ -148,44 +148,44 @@ if (!isset($_SESSION["user-username"]) || !isset($_SESSION["employee-username"])
       
         <div class="intro-content text-white">
             <div class="container">
-                <div class="box">                
+                <div class="box col-lg-4">                
                     <input type="checkbox" class="toggle-btn btn btn-warning btn-lg mr-lg-2" name="" />
                     <div class="user-form">
                         <h2>Customer Login</h2>
                         <form class="" action="login.php" method="POST">
-                        <div class="input-group">
-                            <span>Username</span>
-                            <input type="text" placeholder="Ex. abc123" name="user-username" class="inp"/>
-                        </div>
-                        <div class="input-group">
-                            <span>Password</span>
-                            <input type="password" placeholder="******" name="user-password" class="inp"/>
-                        </div>
-                        <div class="input-group" style="margin-top: 20px;">
-                            <input type="submit" value="Login as User" name="user-submit" class="inp submit-inp btn btn-warning btn-lg mr-lg-2" />
-                        </div>
-                        <div class="input-group" style="margin-top: 20px;">               
-                            <input type="button" value="Go to Sign Up" class="inp submit-inp btn btn-warning btn-lg mr-lg-2" onclick="window.location.href='signup.php'"/>
-                        </div>
+                            <div class="input-group">
+                                <span>Username</span>
+                                <input type="text" placeholder="Ex. abc123" name="user-username" class="inp"/>
+                            </div>
+                            <div class="input-group">
+                                <span>Password</span>
+                                <input type="password" placeholder="******" name="user-password" class="inp"/>
+                            </div>
+                            <div class="input-group" style="margin-top: 20px;">
+                                <input type="submit" value="Login as User" name="user-submit" class="inp submit-inp btn btn-warning btn-lg mr-lg-2" />
+                            </div>
+                            <div class="input-group" style="margin-top: 20px;">               
+                                <input type="button" value="Go to Sign Up" class="inp submit-inp btn btn-warning btn-lg mr-lg-2" onclick="window.location.href='signup.php'"/>
+                            </div>
                         </form>                    
                     </div>
                     <div class="employee-form">
                         <h2>Employee Login</h2>
-                            <form class="" action="login.php" method="POST">
-                                <div class="input-group">
-                                    <span>Username</span>
-                                    <input type="text" placeholder="Ex. abc123" name="employee-username" class="inp"/>
-                                </div>
-                                <div class="input-group">
-                                    <span>Password</span>
-                                    <input type="password" placeholder="******" name="employee-password" class="inp"/>
-                                </div>
-                                <div class="input-group" style="margin-top: 20px;">
-                                    <input type="submit" value="Login as Employee" name="employee-submit" class="inp submit-inp btn btn-warning btn-lg mr-lg-2"/>
-                                </div>
-                                <div class="input-group" style="margin-top: 20px;">                    
-                                    <input type="button" value="Go to Sign Up" class="inp submit-inp btn btn-warning btn-lg mr-lg-2" onclick="window.location.href='signup.php'"/>
-                                </div>
+                        <form class="" action="login.php" method="POST">
+                            <div class="input-group">
+                                <span>Username</span>
+                                <input type="text" placeholder="Ex. abc123" name="employee-username" class="inp"/>
+                            </div>
+                            <div class="input-group">
+                                <span>Password</span>
+                                <input type="password" placeholder="******" name="employee-password" class="inp"/>
+                            </div>
+                            <div class="input-group" style="margin-top: 20px;">
+                                <input type="submit" value="Login as Employee" name="employee-submit" class="inp submit-inp btn btn-warning btn-lg mr-lg-2"/>
+                            </div>
+                            <div class="input-group" style="margin-top: 20px;">                    
+                                <input type="button" value="Go to Sign Up" class="inp submit-inp btn btn-warning btn-lg mr-lg-2" onclick="window.location.href='signup.php'"/>
+                            </div>
                         </form>
                     </div>
                 </div>

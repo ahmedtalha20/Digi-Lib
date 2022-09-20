@@ -152,7 +152,7 @@ if (isset($_POST["user-submit"])) {
       
         <div class="intro-content text-white">
             <div class="container">
-                <div class="box">    
+                <div class="box col-lg-4">    
                     <input type="checkbox" class="toggle-btn btn btn-warning btn-lg mr-lg-2" name="" />
                     <div class="user-form">
                         <h2>Customer Signup</h2>
