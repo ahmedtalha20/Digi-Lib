@@ -23,21 +23,6 @@ if (isset($_SESSION["user-username"]) || isset($_SESSION["employee-username"])) 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" async></script>
     <link rel="stylesheet" href="Include/style.css">
 
-    <script>
-      // Feel free to change the settings on your need
-      var botmanWidget = {
-        frameEndpoint: 'chat.html',
-        chatServer: 'botman.php',
-        title: 'ChatBot',
-        introMessage: 'Hi and welcome to Digi_Lib. How can I help you?',
-        placeholderText: 'Ask Me Something',
-        mainColor: '#F28240',
-        bubbleBackground: '#F28240',
-        bubbleAvatarUrl: 'https://www.applozic.com/assets/resources/images/Chat-Bot-Icon@512px.svg'
-      };
-    </script>
-    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
-
     <title>Digi Lib</title>
     <link rel="icon" type="image/png" href="library.png" sizes="16x16">
   </head>
@@ -210,21 +195,6 @@ if (isset($_SESSION["user-username"]) || isset($_SESSION["employee-username"])) 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" async></script>
     <link rel="stylesheet" href="Include/style.css">
-
-    <script>
-      // Feel free to change the settings on your need
-      var botmanWidget = {
-        frameEndpoint: 'chat.html',
-        chatServer: 'botman.php',
-        title: 'ChatBot',
-        introMessage: 'Hi and welcome to Digi_Lib. How can I help you?',
-        placeholderText: 'Ask Me Something',
-        mainColor: '#F28240',
-        bubbleBackground: '#F28240',
-        bubbleAvatarUrl: 'https://www.applozic.com/assets/resources/images/Chat-Bot-Icon@512px.svg'
-      };
-    </script>
-    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 
     <title>Digi Lib</title>
     <link rel="icon" type="image/png" href="library.png" sizes="16x16" />

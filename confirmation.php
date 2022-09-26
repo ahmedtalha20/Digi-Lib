@@ -35,20 +35,6 @@ if (isset($_SESSION['user-username'])) {
     <link rel="stylesheet" href="Include/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" async></script>
 
-    <script>
-      // Feel free to change the settings on your need
-      var botmanWidget = {
-        frameEndpoint: 'chat.html',
-        chatServer: 'botman.php',
-        title: 'ChatBot',
-        introMessage: 'Hi and welcome to Digi_Lib. How can I help you?',
-        placeholderText: 'Ask Me Something',
-        mainColor: '#F28240',
-        bubbleBackground: '#F28240',
-        bubbleAvatarUrl: 'https://www.applozic.com/assets/resources/images/Chat-Bot-Icon@512px.svg'
-      };
-    </script>
-    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
