@@ -109,7 +109,6 @@ if (isset($_SESSION["employee-username"]) || isset($_SESSION["user-username"])) 
                                 <input class="btn btn-warning btn-md mr-lg-2" type="submit" name="sort-submit" value="Sort">
                             </form>
                         </div>
-
                     </div>
                     
                     <?php

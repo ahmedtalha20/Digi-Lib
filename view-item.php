@@ -196,7 +196,7 @@ if (isset($_SESSION["user-username"]) || isset($_SESSION["employee-username"])) 
                     if ($rented == 0) {
                 ?>
                       <form method="POST">
-                        <input type="submit" value="Rent" name="rent"> </input>
+                        <input class="btn btn-warning btn-md mr-lg-2" type="submit" value="Rent" name="rent"> </input>
                       </form>
                     <?php
                     } else {

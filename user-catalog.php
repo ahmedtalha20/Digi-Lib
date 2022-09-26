@@ -55,28 +55,26 @@ if (isset($_SESSION["user-username"])) {
             </div>
 
             <div class="intro-content">
-                <div class="container">
+                <div class="container">                    
                     <h2 class="success">
                         <!-- @ - won't show error when there is no id -->
                         <?php echo @$_GET["id"]; ?>
                     </h2>
 
 
-
                     <?php
                     if (!isset($_GET["searchBtn"])) {
                     ?>
-                        <table width="1000" border="5" align="center">
-                            <h2 align="center">Rented Items</h2>
-                            <tr>
-                                <th>User</th>
-                                <th>Title</th>
-                                <th>View Item</th>
-                                <th>Delete Item</th>
+                        <div class="container database-table d-none d-lg-block">
+                            <h2 class="text-center">Rented Items</h2>
+                            <div class="row database-title">
+                                <div class="col-lg-3"><span class="title">User</span></div>
+                                <div class="col-lg-5"><span class="title">Title</span></div>
+                                <div class="col-lg-2"><span class="title">View Item</span></div>
+                                <div class="col-lg-2"><span class="title">Delete Item</span></div>
+                            </div>                            
                             <?php
-                        } ?>
-                            </tr>
-
+                        } ?>                                                        
 
                             <?php
 
@@ -105,23 +103,71 @@ if (isset($_SESSION["user-username"])) {
                                 $item = $value['item'];
                                 $catalog_id = $value['catalog_id'];
                             ?>
-                                <tr>
-
-                                    <td><?php echo $username; ?></td>
-                                    <td><?php echo $item; ?></td>
-                                    <td><a class="btn btn-warning btn-md mr-lg-2 my-1" href="view-item.php?id=<?php echo $catalog_id ?>">Item Link</a></td>
-                                    <td>
-                                        <a class="btn btn-warning btn-md mr-lg-2 my-1" href="delete-item.php?id=<?php echo $Id; ?>">Delete Item</a>
-
-                                    </td>
-
-
-
-                                </tr>
+                                
+                            <div class="row database-info">
+                                <div class="col-lg-3"><span><?php echo $username; ?></span></div>
+                                <div class="col-lg-5"><span><?php echo $item; ?></span></div>
+                                <div class="col-lg-2"><span><a class="btn btn-warning btn-md mr-lg-2 my-1" href="view-item.php?id=<?php echo $catalog_id ?>">Item Link</a></span></div>
+                                <div class="col-lg-2"><span><a class="btn btn-warning btn-md mr-lg-2 my-1" href="delete-item.php?id=<?php echo $Id; ?>">Delete Item</a></span></div>
+                            </div>
+                        
                             <?php
                             }
+                            ?>                        
+                        </div>
+
+
+                    <?php
+                    if (!isset($_GET["searchBtn"])) {
+                    ?>
+                        <div class="container database-table-mobile d-lg-none">
+                            <h2 class="text-center">Rented Items</h2>                            
+                            <?php
+                        } ?>                                                        
+
+                            <?php
+
+
+                            global $ConnectingDB;
+
+
+                            $sql = "SELECT * From user_items WHERE username='$current_user'";
+                            $stmt = $ConnectingDB->query($sql);
+                            $listOfList = array();
+                            while ($DataRows = $stmt->fetch()) {
+                                $Id                 = $DataRows["id"];
+                                $username               = $DataRows["username"];
+                                $item  = $DataRows["item"];
+                                $catalog_id = $DataRows["catalog_id"];
+
+                                array_push($listOfList, array('id' => $Id, 'username' => $username, 'item' => $item, 'catalog_id' => $catalog_id));
+                            }
+
+
+
+
+                            foreach ($listOfList as $value) {
+                                $Id = $value['id'];
+                                $username = $value['username'];
+                                $item = $value['item'];
+                                $catalog_id = $value['catalog_id'];
                             ?>
-                        </table>
+                                
+                            <div class="row database-info">
+                                <div class="col-sm-6"><span class="title">User</span></div>
+                                <div class="col-sm-6"><span><?php echo $username; ?></span></div>
+                                <div class="col-sm-6"><span class="title">Title</span></div>
+                                <div class="col-sm-6"><span><?php echo $item; ?></span></div>
+                                <div class="col-sm-6"><span class="title">View Item</span></div>
+                                <div class="col-sm-6"><span><a class="btn btn-warning btn-md mr-lg-2 my-1" href="view-item.php?id=<?php echo $catalog_id ?>">Item Link</a></span></div>
+                                <div class="col-sm-6"><span class="title">Delete Item</span></div>
+                                <div class="col-sm-6"><span><a class="btn btn-warning btn-md mr-lg-2 my-1" href="delete-item.php?id=<?php echo $Id; ?>">Delete Item</a></span></div>
+                            </div>
+                        
+                            <?php
+                            }
+                            ?>                        
+                        </div>
                 </div>
             </div>
         </div>
