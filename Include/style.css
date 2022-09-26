@@ -217,8 +217,6 @@
   border: none;  
 }
 
-
-
 .sort-row{
   margin-top: 10px;
 }
@@ -231,6 +229,50 @@
   color: black;
   vertical-align: middle;
 }
+
+.database-title > div,
+.database-info > div
+{
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+
+.database-table > h2{
+  margin: 20px 0;
+}
+
+.database-table-mobile > h2{
+  /* margin: 20px 0; */
+}
+
+.title{  
+  font-weight: bold;
+} 
+
+.database-table .database-info > div > span{  
+  margin: 5px 0;
+}
+
+.database-table-mobile .database-info{
+  margin-bottom: 40px;
+}
+
+.database-table-mobile .database-info > div > span{
+  font-size: 20px;
+}
+
+.database-table-mobile .database-info > div > span{  
+  margin: 10px 0;
+}
+
+.rental-button,
+.search-button{
+  margin-top: 20px;
+}
+
 
 .user-profile .form-control, 
 .employee-profile .form-control,

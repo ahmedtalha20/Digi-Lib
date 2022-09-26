@@ -21,20 +21,6 @@ if (isset($_SESSION["employee-username"]) || isset($_SESSION["user-username"])) 
         <link rel="stylesheet" href="Include/style.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous" async></script>
 
-        <script>
-            // Feel free to change the settings on your need
-            var botmanWidget = {
-                frameEndpoint: 'chat.html',
-                chatServer: 'botman.php',
-                title: 'ChatBot',
-                introMessage: 'Hi and welcome to Digi_Lib. How can I help you?',
-                placeholderText: 'Ask Me Something',
-                mainColor: '#F28240',
-                bubbleBackground: '#F28240',
-                bubbleAvatarUrl: 'https://www.applozic.com/assets/resources/images/Chat-Bot-Icon@512px.svg'
-            };
-        </script>
-        <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
     </head>
 
     <body>
@@ -125,10 +111,10 @@ if (isset($_SESSION["employee-username"]) || isset($_SESSION["user-username"])) 
                         </div>
 
                     </div>
-
+                    
                     <?php
 
-
+                    // Search Result
                     if (isset($_GET["searchBtn"])) {
                         global $ConnectingDB;
                         $Search = $_GET["search"];
@@ -147,69 +133,258 @@ if (isset($_SESSION["employee-username"]) || isset($_SESSION["user-username"])) 
                                 $Available = "Yes";
                             }
                             $Type               = $DataRows["type"];
+                            
 
-                    ?>
-                            <div>
-                                <table width="1000" border="5" align="center">
-                                    <!-- <h3 align="center">Search Result</h3> -->
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Author | Dev | Artist</th>
-                                        <th>Type</th>
-                                        <th>ISBN</th>
-                                        <th>View Item</th>
-                                        <th>Available</th>
-                                        <?php if (isset($_SESSION["employee-username"])) { ?>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        <?php
-                                        } ?>
-                                        <th>Search Again</th>
-                                    </tr>
-                                    <tr>
-                                        <td><?php echo $Name; ?></td>
-                                        <td><?php echo $Author_dev_artist; ?></td>
-                                        <td><?php echo $Type; ?></td>
-                                        <td><?php echo $ISBN; ?></td>
-                                        <td><a class="btn btn-warning btn-md mr-lg-2" href="view-item.php?id=<?php echo $Id ?>">Item Link</a></td>
-                                        <td><?php echo $Available; ?></td>
-                                        <?php if (isset($_SESSION["employee-username"])) { ?>
-                                            <td><a class="btn btn-warning btn-md mr-lg-2" href="edit.php?id=<?php echo $Id ?>">Edit</a></td>
-                                            <td><a class="btn btn-warning btn-md mr-lg-2" href="delete.php?id=<?php echo $Id ?>">Delete</a></td>
-                                        <?php
-                                        } ?>
-                                        <td> <a class="btn btn-warning btn-md mr-lg-2" href="view-catalog.php">Search Again</a> </td>
-                                    </tr>
-                                </table>
+                    ?>                            
+                            <div class="container database-table d-none d-lg-block">
+                                <h2 class="text-center">Search Result</h2>
+
+                                <?php
+                                
+                                // if employee logged in
+                                if (isset($_SESSION["employee-username"])) {
+
+                                ?>
+                                    <div class="row database-title">
+                                        <div class="col-lg-2"><span class="title">Name</span></div>
+                                        <div class="col-lg-2"><span class="title">Author | Dev | Artist</span></div>
+                                        <div class="col-lg-1"><span class="title">Type</span></div>
+                                        <div class="col-lg-2"><span class="title">ISBN</span></div>
+                                        <div class="col-lg-2"><span class="title">View Item</span></div>                            
+                                        <div class="col-lg-1"><span class="title">Available</span></div>
+                                        <div class="col-lg-1"><span class="title">Edit</span></div>
+                                        <div class="col-lg-1"><span class="title">Delete</span></div>
+                                    </div>
+                                    <div class="row database-info">
+                                        <div class="col-lg-2"><span><?php echo $Name; ?></span></div>
+                                        <div class="col-lg-2"><span><?php echo $Author_dev_artist; ?></span></div>
+                                        <div class="col-lg-1"><span><?php echo $Type; ?></span></div>
+                                        <div class="col-lg-2"><span><?php echo $ISBN; ?></span></div>
+                                        <div class="col-lg-2"><span><a class="btn btn-warning btn-md mr-lg-2" href="view-item.php?id=<?php echo $Id ?>">Item Link</a></span></div>                                                        
+                                        <div class="col-lg-1"><span><?php echo $Available; ?></span></div>     
+                                        <div class="col-lg-1"><span><a class="btn btn-warning btn-md mr-lg-2" href="edit.php?id=<?php echo $Id ?>">Edit</a></span></div>
+                                        <div class="col-lg-1"><span><a class="btn btn-warning btn-md mr-lg-2" href="delete.php?id=<?php echo $Id ?>">Delete</a></span></div>   
+                                    </div>
+                                <?php
+
+                                    // if customer logged in
+                                } else {
+
+                                ?>
+                                    <div class="row database-title">
+                                        <div class="col-lg-3"><span>Name</span></div>
+                                        <div class="col-lg-3"><span>Author | Dev | Artist</span></div>
+                                        <div class="col-lg-1"><span>Type</span></div>
+                                        <div class="col-lg-2"><span>ISBN</span></div>
+                                        <div class="col-lg-2"><span>View Item</span></div>                            
+                                        <div class="col-lg-1"><span>Available</span></div>
+                                    </div>
+                                    <div class="row database-info">
+                                        <div class="col-lg-3"><span><?php echo $Name; ?></span></div>
+                                        <div class="col-lg-3"><span><?php echo $Author_dev_artist; ?></span></div>
+                                        <div class="col-lg-1"><span><?php echo $Type; ?></span></div>
+                                        <div class="col-lg-2"><span><?php echo $ISBN; ?></span></div>
+                                        <div class="col-lg-2"><span><a class="btn btn-warning btn-md mr-lg-2" href="view-item.php?id=<?php echo $Id ?>">Item Link</a></span></div>                                                        
+                                        <div class="col-lg-1"><span><?php echo $Available; ?></span></div>                         
+                                    </div>
+                                <?php
+
+                                }
+
+                                ?>
+                                
                             </div>
+                            
+                            <!-- mobile search result -->
+                            <div class="container database-table-mobile d-lg-none">
+                                <h2 class="text-center">Search Result</h2>
+                                <div class="row database-info">
+                                    <div class="col-lg-2 col-sm-6"><span class="title">Name</span></div>
+                                    <div class="col-lg-2 col-sm-6"><span><?php echo $Name; ?></span></div>
+                                    <div class="col-lg-2 col-sm-6"><span class="title">Author | Dev | Artist</span></div>
+                                    <div class="col-lg-2 col-sm-6"><span><?php echo $Author_dev_artist; ?></span></div>
+                                    <div class="col-lg-1 col-sm-6"><span class="title">Type</span></div>
+                                    <div class="col-lg-1 col-sm-6"><span><?php echo $Type; ?></span></div>
+                                    <div class="col-lg-2 col-sm-6"><span class="title">ISBN</span></div>
+                                    <div class="col-lg-2 col-sm-6"><span><?php echo $ISBN; ?></span></div>
+                                    <div class="col-lg-2 col-sm-6"><span class="title">View Item</span></div>                            
+                                    <div class="col-lg-2 col-sm-6"><span><a class="btn btn-warning btn-md mr-lg-2" href="view-item.php?id=<?php echo $Id ?>">Item Link</a></span></div>                                                        
+                                    <div class="col-lg-1 col-sm-6"><span class="title">Available</span></div>
+                                    <div class="col-lg-1 col-sm-6"><span><?php echo $Available; ?></span></div>
+                                    <?php if (isset($_SESSION["employee-username"])) { ?>
+                                    <div class="col-lg-1 col-sm-6"><span class="title">Edit</span></div>
+                                    <div class="col-lg-1 col-sm-6"><span><a class="btn btn-warning btn-md mr-lg-2" href="edit.php?id=<?php echo $Id ?>">Edit</a></span></div>
+                                    <div class="col-lg-1 col-sm-6"><span class="title">Delete</span></div>
+                                    <div class="col-lg-1 col-sm-6"><span><a class="btn btn-warning btn-md mr-lg-2" href="delete.php?id=<?php echo $Id ?>">Delete</a></span></div>   
+                                        <?php
+                                        } ?>
+                                </div>                        
+                            </div> 
+                                                        
 
-                    <?php }
+                    <?php }                    
+                    ?>
+                            <div class="row d-lg-none">
+                                <div class="col-lg-12 d-flex justify-content-center">
+                                    <a class="btn btn-warning btn-md mr-lg-2" href="view-catalog.php">Search Again</a>
+                                </div>
+                            </div>
+                            <div class="row d-none d-lg-block">
+                                <div class="col-lg-12 d-flex justify-content-center search-button">
+                                    <a class="btn btn-warning btn-md mr-lg-2" href="view-catalog.php">Search Again</a>
+                                </div>
+                            </div>
+                    <?php
                     }
                     ?>
 
                     <?php
+
+                    // View From Database
                     if (!isset($_GET["searchBtn"])) {
                     ?>
-                        <table width="1000" border="5" align="center">
-                            <h2 align="center">View from Database</h2>
-                            <tr>
-                                <th>Name</th>
-                                <th>Author | Dev | Artist</th>
-                                <th>Type</th>
-                                <th>ISBN</th>
-                                <th>View Item</th>
-                                <th>Available</th>
-                                <?php if (isset($_SESSION["employee-username"])) {
-                                ?>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                <?php
-                                } ?>
-                            </tr>
+                        
 
+                        <!-- Customer Database Desktop (Title) -->
+                        <div class="container database-table d-none d-lg-block">
+                            <h2 class="text-center">View From Database</h2>
+                            <div class="row database-info">
 
                             <?php
 
+                            // if employee logged in
+                            if (isset($_SESSION["employee-username"])) {
+
+                            ?>
+                                <div class="col-lg-2"><span class="title">Name</span></div>
+                                <div class="col-lg-2"><span class="title">Author | Dev | Artist</span></div>
+                                <div class="col-lg-1"><span class="title">Type</span></div>
+                                <div class="col-lg-2"><span class="title">ISBN</span></div>
+                                <div class="col-lg-2"><span class="title">View Item</span></div>                            
+                                <div class="col-lg-1"><span class="title">Available</span></div>
+                                <div class="col-lg-1"><span class="title">Edit</span></div>
+                                <div class="col-lg-1"><span class="title">Delete</span></div>
+                            <?php
+
+                                // if customer logged in
+                            } else {
+
+                            ?>
+                                <div class="col-lg-3"><span class="title">Name</span></div>
+                                <div class="col-lg-3"><span class="title">Author | Dev | Artist</span></div>
+                                <div class="col-lg-1"><span class="title">Type</span></div>
+                                <div class="col-lg-2"><span class="title">ISBN</span></div>
+                                <div class="col-lg-2"><span class="title">View Item</span></div>                            
+                                <div class="col-lg-1"><span class="title">Available</span></div>
+                            <?php
+
+                            }
+
+                            ?>
+                            
+                            </div>                       
+                        </div>                        
+
+                        <!-- Database Desktop (info) -->
+                        <div class="container database-table d-none d-lg-block">
+                        <?php
+
+
+                        global $ConnectingDB;
+
+                        $sort_asc_dec = "SORT_ASC";
+                        $sortType = "all";
+                        if (isset($_POST["sort-submit"])) {
+                            $sort_asc_dec = $_POST["sort-name"];
+                            $sortType = $_POST["sort-type"];
+                        }
+
+
+                        $sql = "SELECT * From catalog";
+                        $stmt = $ConnectingDB->query($sql);
+                        $listOfList = array();
+                        while ($DataRows = $stmt->fetch()) {
+                            $Id                 = $DataRows["id"];
+                            $Name               = $DataRows["name"];
+                            $Author_dev_artist  = $DataRows["author_dev_artist"];
+                            $ISBN               = $DataRows["isbn"];
+                            $Available          = "No";
+                            if ($DataRows["available"]) {
+                                $Available = "Yes";
+                            }
+                            $Type               = $DataRows["type"];
+
+                            array_push($listOfList, array('id' => $Id, 'name' => $Name, 'author_dev_artist' => $Author_dev_artist, 'type' => $Type, 'isbn' => $ISBN, 'available' => $Available));
+                        }
+
+                        $allNames = array_column($listOfList, 'name');
+                        if ($sort_asc_dec == "SORT_DESC") {
+                            array_multisort($allNames, SORT_DESC, $listOfList);
+                        } else {
+                            array_multisort($allNames, SORT_ASC, $listOfList);
+                        }
+
+
+                        foreach ($listOfList as $value) {
+                            $Id = $value['id'];
+                            $Name = $value['name'];
+                            $Author_dev_artist = $value['author_dev_artist'];
+                            $Type = $value['type'];
+                            $ISBN = $value['isbn'];
+                            $Available = $value['available'];
+
+                            if ($Type == $sortType || $sortType == "all") {
+
+                        ?>
+                            <div class="row database-info">
+
+                            <?php
+
+                            // if employee logged in
+                            if (isset($_SESSION["employee-username"])) {
+
+                            ?>
+                                <div class="col-lg-2"><span><?php echo $Name; ?></span></div>
+                                <div class="col-lg-2"><span><?php echo $Author_dev_artist; ?></span></div>
+                                <div class="col-lg-1"><span><?php echo $Type; ?></span></div>
+                                <div class="col-lg-2"><span><?php echo $ISBN; ?></span></div>
+                                <div class="col-lg-2"><span><a class="btn btn-warning btn-md mr-lg-2 my-1" href="view-item.php?id=<?php echo $Id ?>">Item Link</a></span></div>                            
+                                <div class="col-lg-1"><span><?php echo $Available; ?></span></div>
+                                <div class="col-lg-1"><span><a class="btn btn-warning btn-md mr-lg-2" href="edit.php?id=<?php echo $Id ?>">Edit</a></span></div>
+                                <div class="col-lg-1"><span><a class="btn btn-warning btn-md mr-lg-2" href="delete.php?id=<?php echo $Id ?>">Delete</a></span></div>   
+                            <?php
+
+                                // if customer logged in
+                                
+                            } else {
+
+                            ?>
+                                <div class="col-lg-3"><span><?php echo $Name; ?></span></div>
+                                <div class="col-lg-3"><span><?php echo $Author_dev_artist; ?></span></div>
+                                <div class="col-lg-1"><span><?php echo $Type; ?></span></div>
+                                <div class="col-lg-2"><span><?php echo $ISBN; ?></span></div>
+                                <div class="col-lg-2"><span><a class="btn btn-warning btn-md mr-lg-2 my-1" href="view-item.php?id=<?php echo $Id ?>">Item Link</a></span></div>                            
+                                <div class="col-lg-1"><span><?php echo $Available; ?></span></div>
+                            <?php
+
+                            }
+
+                            ?>
+                                
+                            </div>
+
+                            
+                                
+                        <?php
+                            }
+                        } ?>
+                                                        
+                        </div>
+
+                        <!-- Database Mobile -->
+                        <div class="container database-table-mobile d-lg-none">
+                            <h2 class="text-center">View From Database</h2>
+                            <?php
 
                             global $ConnectingDB;
 
@@ -257,28 +432,53 @@ if (isset($_SESSION["employee-username"]) || isset($_SESSION["user-username"])) 
                                 if ($Type == $sortType || $sortType == "all") {
 
                             ?>
-                                    <tr>
-                                        <td><?php echo $Name; ?></td>
-                                        <td><?php echo $Author_dev_artist; ?></td>
-                                        <td><?php echo $Type; ?></td>
-                                        <td><?php echo $ISBN; ?></td>
-                                        <td><a class="btn btn-warning btn-md mr-lg-2 my-1" href="view-item.php?id=<?php echo $Id ?>">Item Link</a></td>
-                                        <td><?php echo $Available; ?></td>
-                                        <?php if (isset($_SESSION["employee-username"])) {
-                                        ?>
-                                            <td><a class="btn btn-warning btn-md mr-lg-2" href="edit.php?id=<?php echo $Id ?>">Edit</a></td>
-                                            <td><a class="btn btn-warning btn-md mr-lg-2" href="delete.php?id=<?php echo $Id ?>">Delete</a></td>
-                                        <?php
-                                        } ?>
-                                    </tr>
+                                <div class="row database-info">
+                                    <div class="col-sm-6"><span class="title">Name</span></div>
+                                    <div class="col-sm-6"><span><?php echo $Name; ?></span></div>
+                                    <div class="col-sm-6"><span class="title">Author | Dev | Artist</span></div>
+                                    <div class="col-sm-6"><span><?php echo $Author_dev_artist; ?></span></div>
+                                    <div class="col-sm-6"><span class="title">Type</span></div>
+                                    <div class="col-sm-6"><span><?php echo $Type; ?></span></div>
+                                    <div class="col-sm-6"><span class="title">ISBN</span></div>
+                                    <div class="col-sm-6"><span><?php echo $ISBN; ?></span></div>
+                                    <div class="col-sm-6"><span class="title">View Item</span></div>                            
+                                    <div class="col-sm-6"><span><a class="btn btn-warning btn-md mr-lg-2 my-1" href="view-item.php?id=<?php echo $Id ?>">Item Link</a></span></div>                            
+                                    <div class="col-sm-6"><span class="title">Available</span></div>
+                                    <div class="col-sm-6"><span><?php echo $Available; ?></span></div>
+
+                                    <?php if (isset($_SESSION["employee-username"])) { ?>
+                                    <div class="col-sm-6"><span class="title">Edit</span></div>
+                                    <div class="col-sm-6"><span><a class="btn btn-warning btn-md mr-lg-2" href="edit.php?id=<?php echo $Id ?>">Edit</a></span></div>
+                                    <div class="col-sm-6"><span class="title">Delete</span></div>
+                                    <div class="col-sm-6"><span><a class="btn btn-warning btn-md mr-lg-2" href="delete.php?id=<?php echo $Id ?>">Delete</a></span></div>   
+                                    <?php
+                                    } ?>
+
+                                </div>
+
+                                
+                                    
                             <?php
                                 }
-                            } ?>
-                        </table>
+                            } ?>                        
+                        </div>
+
                         <?php
-                        if (isset($_SESSION["user-username"])) {
-                            echo '<a class="btn btn-warning btn-md mr-lg-2" href="user-catalog.php">View Rentals</a>
-                        </div>';
+                        if (isset($_SESSION["user-username"])) { ?>
+
+                        <div class="row d-none d-lg-block">
+                            <div class="col-lg-12 d-flex justify-content-center rental-button">
+                                <a class="btn btn-warning btn-md mr-lg-2" href="user-catalog.php">View Rentals</a>
+                            </div>
+                        </div>
+
+                        <div class="row d-lg-none">
+                            <div class="col-lg-12 d-flex justify-content-center">
+                                <a class="btn btn-warning btn-md mr-lg-2" href="user-catalog.php">View Rentals</a>
+                            </div>
+                        </div>
+
+                        <?php
                         }
                         ?>
                 </div>
