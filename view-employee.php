@@ -64,9 +64,8 @@ $currentuser = $_SESSION["employee-username"];
                                 <input class="search-submit btn btn-warning btn-md mr-lg-2"  type="submit" name="searchBtn" value="Search record">
                             </form>
                         </fieldset>
-                    </div>
-                    
-                </div>
+                    </div>                    
+                </div>                            
                 
                 <?php
 
@@ -84,57 +83,57 @@ $currentuser = $_SESSION["employee-username"];
                         $Password           = $DataRows["password"];
                         
                     ?>
+                         <div class="container database-table d-none d-lg-block">
+                            <h2 class="text-center">Search Result</h2>
+                            <div class="row database-title">
+                                <div class="col-lg-4"><span class="title">Name</span></div>
+                                <div class="col-lg-4"><span class="title">Username</span></div>
+                                <div class="col-lg-4"><span class="title">Delete</span></div>                                
+                            </div>
 
-                        <div>
-                            <table width="400" border="5" align="center">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Username</th>
-                                    <?php 
-
-                                    if($currentuser != $Username){
-                                     
-                                    ?>    
-
-                                    <th>Delete</th>
-
-                                    <?php
-
-                                    }
-
-                                    ?>
-
-                                    <th>Search Again</th>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $Name; ?></td>
-                                    <td><?php echo $Username; ?></td>
-
-                                        <?php
-
-                                            if($currentuser != $Username){
-
-                                        ?>        
-                                                
-                                                <td><a class="btn btn-warning btn-md mr-lg-2" href= "delete-employee.php?id=<?php echo $Id?>">Delete</a></td>
-                                                <td> <a class="btn btn-warning btn-md mr-lg-2" href="view-employee.php">Search Again</a> </td>  
-
-                                        <?php        
-
-                                            }else{
-
-                                        ?>
-                                                <td> <a class="btn btn-warning btn-md mr-lg-2" href="view-employee.php">Search Again</a> </td>
-
-                                        <?php        
-
-                                            }
-
-                                        ?>            
-
+                            <div class="row database-info">
+                                <div class="col-lg-4"><span><?php echo $Name; ?></span></div>
+                                <div class="col-lg-4"><span><?php echo $Username; ?></span></div>                                
+                                <div class="col-lg-4"><span>
                                     
-                                </tr>
-                            </table>
+                                <?php
+                                if($currentuser != $Username){
+                                ?>
+                                <a class="btn btn-warning btn-md mr-lg-2" href= "delete-employee.php?id=<?php echo $Id?>">Delete</a>                                    
+                                <?php        
+                                } else{
+                                ?>
+                                <a class="btn btn-warning btn-md mr-lg-2" href= "#">Can't Delete Your Account</a>                                    
+                                <?php
+                                }                            
+                                ?>
+                                </span></div>   
+                            </div>
+                        </div>
+                        
+                        <div class="container database-table-mobile d-lg-none">
+                            <h2 class="text-center">Search Result</h2>                            
+
+                            <div class="row database-info">
+                                <div class="col-sm-6"><span class="title">Name</span></div>
+                                <div class="col-sm-6"><span><?php echo $Name; ?></span></div>
+                                <div class="col-sm-6"><span class="title">Username</span></div>
+                                <div class="col-sm-6"><span><?php echo $Username; ?></span></div>                                
+                                <div class="col-sm-6"><span class="title">Delete</span></div>                                
+                                <div class="col-sm-6"><span>                                    
+                                <?php
+                                if($currentuser != $Username){
+                                ?>
+                                <a class="btn btn-warning btn-md mr-lg-2" href= "delete-employee.php?id=<?php echo $Id?>">Delete</a>                                    
+                                <?php        
+                                } else{
+                                ?>
+                                <a class="btn btn-warning btn-md mr-lg-2" href= "#">Can't Delete Your Account</a>                                    
+                                <?php
+                                }                            
+                                ?>
+                                </span></div>   
+                            </div>
                         </div>
 
                 <?php 
@@ -142,7 +141,16 @@ $currentuser = $_SESSION["employee-username"];
                     }
 
                 ?>
-
+                    <div class="row d-lg-none">
+                        <div class="col-lg-12 d-flex justify-content-center">
+                            <a class="btn btn-warning btn-md mr-lg-2" href="view-employee.php">Search Again</a>
+                        </div>
+                    </div>
+                    <div class="row d-none d-lg-block">
+                        <div class="col-lg-12 d-flex justify-content-center search-button">
+                            <a class="btn btn-warning btn-md mr-lg-2" href="view-employee.php">Search Again</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -159,18 +167,16 @@ $currentuser = $_SESSION["employee-username"];
                 if (!isset($_GET["searchBtn"])) {
                     
                     ?>
-                
-                    <table width="400" border="5" align="center">
-                        <h3 align="center">List Of Employees</h3>
-                        <tr>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Delete</th>
-                        
-                        </tr>
+
+                    <div class="container database-table d-none d-lg-block">
+                        <h2 class="text-center">List Of Employees Desktop</h2>
+                        <div class="row database-title">
+                            <div class="col-lg-4"><span class="title">Name</span></div>
+                            <div class="col-lg-4"><span class="title">Username</span></div>
+                            <div class="col-lg-4"><span class="title">Delete</span></div>                                
+                        </div>                                                                               
                         
                         <?php
-
                 
                         global $ConnectingDB;
 
@@ -183,31 +189,78 @@ $currentuser = $_SESSION["employee-username"];
 
                         ?>
 
-                            <tr>
-                            <td><?php echo $Name; ?></td>
-                            <td><?php echo $Username; ?></td>
-        
-                            <?php
-                            if($currentuser != $Username){
-
-                            ?>        
-                            
-                                <td><a class="btn btn-warning btn-md mr-lg-2" href= "delete-employee.php?id=<?php echo $Id?>">Delete</a></td>   
-                                                
-
-                            <?php        
-
-                            }
-                            
-                            ?>
+                            <div class="row database-info">
+                                <div class="col-lg-4"><span><?php echo $Name; ?></span></div>
+                                <div class="col-lg-4"><span><?php echo $Username; ?></span></div>                                
+                                <div class="col-lg-4"><span>
+                                    
+                                <?php
+                                if($currentuser != $Username){
+                                ?>
+                                <a class="btn btn-warning btn-md mr-lg-2" href= "delete-employee.php?id=<?php echo $Id?>">Delete</a>                                    
+                                <?php        
+                                } else{
+                                ?>
+                                <a class="btn btn-warning btn-md mr-lg-2" href= "#">Can't Delete Your Account</a>                                    
+                                <?php
+                                }                            
+                                ?>
+                                </span></div>   
+                                                        
+                            </div>         
 
                     <?php
 
                         }
 
-                    ?>
+                    ?>                    
+                    </div>
 
-                    </table>
+                    <div class="container database-table-mobile d-lg-none">
+                        <h2 class="text-center">List Of Employees Desktop</h2>                                                                                                      
+                        
+                        <?php
+                
+                        global $ConnectingDB;
+
+                        $sql = "SELECT * From employee_accounts";
+                        $stmt = $ConnectingDB->query($sql);
+                        while ($DataRows = $stmt->fetch()) {
+                            $Id                 = $DataRows["id"];
+                            $Name               = $DataRows["name"];
+                            $Username           = $DataRows["username"];
+
+                        ?>
+
+                            <div class="row database-info">
+                                <div class="col-sm-6"><span class="title">Name</span></div>
+                                <div class="col-sm-6"><span><?php echo $Name; ?></span></div>
+                                <div class="col-sm-6"><span class="title">Username</span></div>
+                                <div class="col-sm-6"><span><?php echo $Username; ?></span></div>                                
+                                <div class="col-sm-6"><span class="title">Delete</span></div>        
+                                <div class="col-sm-6"><span>
+                                    
+                                <?php
+                                if($currentuser != $Username){
+                                ?>
+                                <a class="btn btn-warning btn-md mr-lg-2" href= "delete-employee.php?id=<?php echo $Id?>">Delete</a>                                    
+                                <?php        
+                                } else{
+                                ?>
+                                <a class="btn btn-warning btn-md mr-lg-2" href= "#">Can't Delete Your Account</a>                                    
+                                <?php
+                                }                            
+                                ?>
+                                </span></div>   
+                                                        
+                            </div>         
+
+                    <?php
+
+                        }
+
+                    ?>                    
+                    </div>
             </div>
         </div>
     </div>
