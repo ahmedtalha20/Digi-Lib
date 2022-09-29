@@ -169,7 +169,7 @@ $currentuser = $_SESSION["employee-username"];
                     ?>
 
                     <div class="container database-table d-none d-lg-block">
-                        <h2 class="text-center">List Of Employees Desktop</h2>
+                        <h2 class="text-center">List Of Employees</h2>
                         <div class="row database-title">
                             <div class="col-lg-4"><span class="title">Name</span></div>
                             <div class="col-lg-4"><span class="title">Username</span></div>
@@ -217,7 +217,7 @@ $currentuser = $_SESSION["employee-username"];
                     </div>
 
                     <div class="container database-table-mobile d-lg-none">
-                        <h2 class="text-center">List Of Employees Desktop</h2>                                                                                                      
+                        <h2 class="text-center">List Of Employees</h2>                                                                                                      
                         
                         <?php
                 
